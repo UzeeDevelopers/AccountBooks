@@ -7,14 +7,12 @@
 class kamokuMst {
     
     public function getKamokuAll() {
-        $sql =    "SELECT kamoku_cd,"
-                . "       kamoku_nm"
-                . "FROM   kamoku_mst"
-                . "WHERE  validate_flg = '0';";
+        $sql =    "SELECT * "
+                . "FROM   KAMOKU_MST "
+                . "WHERE  VALIDATE_FLG = '0';";
         
         $conn = new utilDB();
         $dbh = $conn->connectDB();
-        
         // SQLの発行
         $stmt = $dbh->query($sql);
         

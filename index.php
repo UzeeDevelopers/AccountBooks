@@ -5,7 +5,9 @@ class init {
             './utilDB.php',
             './kamokuMst.php'
         );
-        require_once $classes;
+        foreach ($classes as $class) {
+            require_once $class;
+        }
     }
 }
 
@@ -23,10 +25,9 @@ $init->loadClass();
         <?php
         $kamoku = new kamokuMst;
         $stmt = $kamoku->getKamokuAll();
-        
         while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
         ?>
-        <a><?php $row["kamoku_nm"]; ?></a>
+        <a><?php echo $row["KAMOKU_NM"]; ?></a>
         <?php
         }
         ?>

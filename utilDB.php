@@ -6,8 +6,8 @@
  */
 class utilDB {
     
-    private $dsn = 'mysql:dbname=account_books;host=localhost';
-    private $user = 'root';
+    private $dsn = 'mysql:dbname=account_books;host=localhost;charset=utf8';
+    private $user = 'apps';
     private $password = 'apps';
 
     
