@@ -5,12 +5,13 @@
  * @author Sho
  */
 class utilDB {
-    
+    //========================================
+    // ローカルでは、ここは変更して使ってね！
     private $dsn = 'mysql:dbname=account_books;host=localhost;charset=utf8';
     private $user = 'apps';
     private $password = 'apps';
+    //========================================
 
-    
     // DB接続
     public function connectDB() {
         try{
