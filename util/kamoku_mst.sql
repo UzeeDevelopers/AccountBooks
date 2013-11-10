@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2013 年 11 月 08 日 18:21
+-- 生成日時: 2013 年 11 月 10 日 13:00
 -- サーバのバージョン: 5.5.32
 -- PHP のバージョン: 5.4.19
 
@@ -42,8 +42,10 @@ CREATE TABLE IF NOT EXISTS `kamoku_mst` (
 --
 
 INSERT INTO `kamoku_mst` (`KAMOKU_CD`, `KAMOKU_NM`, `VALIDATE_FLG`, `CREATED_BY`, `CREATION_DATE`, `UPDATED_BY`, `UPDATE_DATE`) VALUES
-('000', 'テスト', 0, 'sakamoto', '2013-11-08', NULL, NULL),
-('001', 'TEST', 0, 'sakamoto', '2013-11-08', NULL, NULL);
+('000', '食費', 0, 'sakamoto', '2013-11-08', NULL, NULL),
+('001', '貯金', 0, 'sakamoto', '2013-11-08', NULL, NULL),
+('002', '携帯電話代', 0, 'sakamoto', '2013-11-10', NULL, NULL),
+('003', '家賃', 0, 'sakamoto', '2013-11-10', NULL, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
