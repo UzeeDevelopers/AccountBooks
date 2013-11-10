@@ -4,7 +4,7 @@
  *
  * @author Sho
  */
-class utilDB {
+class UtilDB {
     //========================================
     // ローカルでは、ここは変更して使ってね！
     private $dsn = 'mysql:dbname=account_books;host=localhost;charset=utf8';
