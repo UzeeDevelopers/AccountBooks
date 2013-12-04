@@ -2,8 +2,8 @@
 class init {
     public function loadClass() {
         $classes = array(
-            './util//utilDB.php',
-            './dao/kamokuMst.php'
+            './util/UtilDB.php',
+            './dao/KamokuMstDAO.php'
         );
         foreach ($classes as $class) {
             require_once $class;
@@ -32,24 +32,25 @@ $init->loadClass();
         </div><!-- end navbar -->
         
         <div class="content">
-            <form action="X" method="post">
+            <form action="./control/AddToIF.php" method="post">
                 <table>
                     <tr><td>項目を選択</td></tr>
                     <?php
-                        $kamoku = new KamokuMst;
-                         $stmt = $kamoku->getKamokuAll();
+                        $dao = new KamokuMstDAO();
+                        $stmt = $dao->selectKamokuAll();
                         while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr><td><input type="radio" name="kamoku" value="<?=$row['KAMOKU_CD']; ?>" /><?= $row["KAMOKU_NM"]; ?></td></tr>
                     <?php } ?>
-                    <tr><td>日付</td><td><input type="date" neme="date" value="YYYY/MM/DD"></td></tr>
+                    <tr><td>日付</td><td><input type="date" name="trx_date" /></td></tr>
+                    <tr><td>金額</td><td><input type="number" name="amount" /></td></tr>
                     <tr><td><input type="submit" value="記帳" /></td></tr>
                 </table>
             </form>
         </div><!-- end content -->
         
         <div class="footer">
-            copyright all right reserved UzeeDevelopers org.
+            copyright all rights reserved UzeeDevelopers org.
         </div><!-- end footer -->
     </body>
 </html>
