@@ -19,7 +19,7 @@ class UtilDB {
 
 
     // DB接続
-    public function connectDB() {
+    public function __construct() {
         try{
             $this->dbh = new PDO($this->dsn, $this->user, $this->password);
             $this->trx = $this->dbh->beginTransaction();
@@ -27,7 +27,6 @@ class UtilDB {
             print('Error:'.$e->getMessage());
             die();
         }
-        return $this->dbh;
     }
     
     // DB切断
@@ -36,21 +35,23 @@ class UtilDB {
     }
     
     public function selecter($sql) {
-        $dbh = $this->connectDB();
-        $stmt = $dbh->query($sql);
+        $stmt = $this->dbh->query($sql);
         
         $this->closeDB();
         return $stmt;
     }
     
     public function preparePDO($sql, $args) {
-        $dbh = $this->connectDB();
-        $stmt = $dbh->prepare($sql, $args);
+        $stmt = $this->dbh->prepare($sql, $args);
         
         return $stmt;
     }
     
     public function commitPDO() {
         $this->dbh->commit();
+    }
+    
+    public function rollbackPDO() {
+        $this->dbh->rollback();
     }
 }
