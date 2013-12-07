@@ -22,7 +22,6 @@ class GlInterfaceDAO {
                 . "    :amount);";
                 
         $db = new UtilDB();
-        $dbh = $db->connectDB();
         try {
             $stmt = $dbh->prepare($sql);
             $stmt->bindParam(':id',$args[0], PDO::PARAM_STR);
