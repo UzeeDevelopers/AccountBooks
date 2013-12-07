@@ -2,8 +2,7 @@
 class init {
     public function loadClass() {
         $classes = array(
-            './util/UtilDB.php',
-            './dao/KamokuMstDAO.php'
+            './Model/KamokuMstDao.php'
         );
         foreach ($classes as $class) {
             require_once $class;
@@ -32,13 +31,13 @@ $init->loadClass();
         </div><!-- end navbar -->
         
         <div class="content">
-            <form action="./control/AddToIF.php" method="post">
+            <form action="./Controller/AddToIF.php" method="post">
                 <table>
                     <tr><td>項目を選択</td></tr>
                     <?php
-                        $dao = new KamokuMstDAO();
-                        $stmt = $dao->selectKamokuAll();
-                        while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+                        $dbh = new KamokuMstDao();
+                        $stmt = $dbh->selectKamokuAll();
+                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr><td><input type="radio" name="kamoku" value="<?=$row['KAMOKU_CD']; ?>" /><?= $row["KAMOKU_NM"]; ?></td></tr>
                     <?php } ?>
