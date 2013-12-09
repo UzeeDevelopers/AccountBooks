@@ -1,8 +1,9 @@
 <?php
 
-require 'GlobalDao.php';
+require_once 'GlobalDao.php';
 
 class GlInterfaceDao {
+    
     public function insertIF($args) {
         $sql =    "INSERT  INTO  GL_INTERFACE("
                 . "    USER_ID,"
@@ -28,11 +29,26 @@ class GlInterfaceDao {
             $stmt->execute();
         } catch (PDOException $e) {
             $dao->dbh->rollbak();
-            print('[GL_INTERFACE]INSERT ERROR');
+            print('[GL_INTERFACE]INSERT ERROR:'.$e->getMessage());
             die();
         }
         
         $dao->dbh->commit();
+    }
+    
+    public function selectByUserId($user_id)
+    {
+        $sql = "SELECT  gi.REG_DATE, "
+             . "        km.KAMOKU_NM, "
+             . "        gi.AMOUNT "
+             . "FROM    KAMOKU_MST      km, "
+             . "        GL_INTERFACE    gi "
+             . "WHERE   gi.USER_ID   = '".$user_id."' "
+             . "AND     gi.KAMOKU_CD = km.KAMOKU_CD "
+             . "ORDER BY gi.REG_DATE;";
+        $dao = new GlobalDao();
+        return $dao->simpleSelecter($sql);
+        
     }
 }
 
